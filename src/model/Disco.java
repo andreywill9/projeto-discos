@@ -7,7 +7,7 @@ public class Disco {
 
   private String titulo;
   private List<Artista> artistas;
-  private int ano;
+  private int ano, idDisco;
   private List<Musica> musicas;
   
   private Disco() {}
@@ -32,6 +32,14 @@ public class Disco {
 
   private Disco(String titulo, Integer ano, List<Musica> musicas) {
     this.titulo = titulo;
+    this.ano = ano;
+    this.musicas = musicas;
+  }
+
+  private Disco(int idDisco, String titulo, List<Artista> artistas, Integer ano, List<Musica> musicas) {
+    this.idDisco = idDisco;
+    this.titulo = titulo;
+    this.artistas = artistas;
     this.ano = ano;
     this.musicas = musicas;
   }
@@ -73,19 +81,20 @@ public class Disco {
         musicas.size() : null;
   }
 
+  public int getIdDisco() {
+    return idDisco;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Disco disco = (Disco) o;
-    return Objects.equals(titulo, disco.titulo) &&
-        Objects.equals(artistas, disco.artistas) &&
-        Objects.equals(ano, disco.ano) &&
-        Objects.equals(musicas, disco.musicas);
+    return idDisco == disco.idDisco;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(titulo, artistas, ano, musicas);
+    return Objects.hash(idDisco);
   }
 }
