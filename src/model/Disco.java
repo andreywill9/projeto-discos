@@ -7,7 +7,7 @@ public class Disco {
 
   private String titulo;
   private List<Artista> artistas;
-  private Integer ano;
+  private int ano;
   private List<Musica> musicas;
   
   private Disco() {}
