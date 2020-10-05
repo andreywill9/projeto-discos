@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Objects;
 
 public class Artista {
 
@@ -44,12 +43,14 @@ public class Artista {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Artista artista = (Artista) o;
+
     return idArtista == artista.idArtista;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idArtista);
+    return idArtista;
   }
 }

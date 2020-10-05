@@ -1,7 +1,6 @@
 package model;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Disco {
 
@@ -89,12 +88,14 @@ public class Disco {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Disco disco = (Disco) o;
+
     return idDisco == disco.idDisco;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idDisco);
+    return idDisco;
   }
 }
