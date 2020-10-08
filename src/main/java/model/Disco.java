@@ -8,6 +8,7 @@ public class Disco {
   private List<Artista> artistas;
   private int ano, idDisco;
   private List<Musica> musicas;
+  private Integer idGenero;
   
   private Disco() {}
 
@@ -82,6 +83,14 @@ public class Disco {
 
   public int getIdDisco() {
     return idDisco;
+  }
+
+  public Integer getIdGenero() {
+    return idGenero;
+  }
+
+  public void setIdGenero(Integer idGenero) {
+    this.idGenero = idGenero;
   }
 
   @Override
