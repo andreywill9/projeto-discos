@@ -23,6 +23,7 @@ public class ConnectionFactory {
       con = DriverManager.getConnection(configuracoesBanco, USUARIO, SENHA);
     } catch (SQLException e) {
       criarBanco();
+      criarTabelas();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -35,6 +36,20 @@ public class ConnectionFactory {
       con = DriverManager.getConnection(ENDERECO_BANCO + configuracoesBanco);
       Statement s = con.createStatement();
       s.executeUpdate("CREATE DATABASE IF NOT EXISTS " + BANCO);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void criarTabelas() {
+    try {
+      Class.forName(DRIVER);
+      String configuracoesBanco = String.format("%s/%s?%s", ENDERECO_BANCO, BANCO, TIMEZONE_SSL);
+      con = DriverManager.getConnection(configuracoesBanco, USUARIO, SENHA);
+      statement = con.createStatement();
+      for (Tabelas tabela : Tabelas.values()) {
+        statement.executeUpdate(tabela.script);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
