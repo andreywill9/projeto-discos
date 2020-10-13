@@ -13,6 +13,7 @@ public class ArvoresGeneros {
   private int quantidadeGeneros;
 
   public ArvoresGeneros() {
+    listaGeneros = new ArrayList<>();
     quantidadeGeneros = 0;
   }
 
