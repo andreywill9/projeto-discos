@@ -15,7 +15,13 @@ public class Disco {
     this.idGenero = idGenero;
   }
 
-  public Disco(String titulo, int ano, int idDisco) {
+  public Disco(String titulo, int ano, Integer idGenero) {
+    this.titulo = titulo;
+    this.ano = ano;
+    this.idGenero = idGenero;
+  }
+
+  public Disco(int idDisco, String titulo, int ano) {
     this.titulo = titulo;
     this.ano = ano;
     this.idDisco = idDisco;

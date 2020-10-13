@@ -17,12 +17,14 @@ public class Genero {
   public Genero(String nome) {
     this.nome = nome;
     subgeneros = new ArrayList<>();
+    idsDiscos = new ArrayList<>();
   }
 
   public Genero(int idGenero, String nome, List<Genero> subgeneros) {
     this.idGenero = idGenero;
     this.nome = nome;
     this.subgeneros = subgeneros;
+    idsDiscos = new ArrayList<>();
   }
 
   public Genero(String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
