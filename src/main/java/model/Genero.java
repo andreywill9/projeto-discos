@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Genero {
@@ -7,21 +8,22 @@ public class Genero {
   private int idGenero;
   private String nome;
   private List<Integer> idsDiscos;
-  private Integer idGeneroPai;
-  private List<Integer> idsSubgeneros;
+  private List<Genero> subgeneros;
 
-  private Genero() {}
+  private Genero() {
+    subgeneros = new ArrayList<>();
+  }
 
   private Genero(String nome) {
     this.nome = nome;
+    subgeneros = new ArrayList<>();
   }
 
-  private Genero(int idGenero, String nome, List<Integer> idsDiscos, Integer idGeneroPai, List<Integer> idsSubgeneros) {
+  private Genero(int idGenero, String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
     this.idGenero = idGenero;
     this.nome = nome;
     this.idsDiscos = idsDiscos;
-    this.idGeneroPai = idGeneroPai;
-    this.idsSubgeneros = idsSubgeneros;
+    this.subgeneros = subgeneros;
   }
 
   public String getNome() {
@@ -40,23 +42,38 @@ public class Genero {
     this.idsDiscos = idsDiscos;
   }
 
-  public Integer getIdGeneroPai() {
-    return idGeneroPai;
+  public void adicionarDisco(Integer idDisco) {
+    idsDiscos.add(idDisco);
   }
 
-  public void setIdGeneroPai(Integer idGeneroPai) {
-    this.idGeneroPai = idGeneroPai;
+  public List<Genero> getSubgeneros() {
+    return subgeneros;
   }
 
-  public List<Integer> getIdsSubgeneros() {
-    return idsSubgeneros;
-  }
-
-  public void setIdsSubgeneros(List<Integer> idsSubgeneros) {
-    this.idsSubgeneros = idsSubgeneros;
+  public void setSubgeneros(List<Genero> subgeneros) {
+    this.subgeneros = subgeneros;
   }
 
   public int getIdGenero() {
+    return idGenero;
+  }
+
+  public void adicionarSubgenero(Genero novoSubgenero) {
+    subgeneros.add(novoSubgenero);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Genero genero = (Genero) o;
+
+    return idGenero == genero.idGenero;
+  }
+
+  @Override
+  public int hashCode() {
     return idGenero;
   }
 }
