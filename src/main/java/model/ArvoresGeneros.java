@@ -79,4 +79,8 @@ public class ArvoresGeneros {
     genero.getSubgeneros().forEach(subgenero -> adicionarSubgenerosLista(subgenero, lista));
     lista.add(genero);
   }
+
+  public int getQuantidadeGeneros() {
+    return quantidadeGeneros;
+  }
 }

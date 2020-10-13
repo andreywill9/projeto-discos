@@ -10,11 +10,11 @@ public class Genero {
   private List<Integer> idsDiscos;
   private List<Genero> subgeneros;
 
-  private Genero() {
+  public Genero() {
     subgeneros = new ArrayList<>();
   }
 
-  private Genero(String nome) {
+  public Genero(String nome) {
     this.nome = nome;
     subgeneros = new ArrayList<>();
   }
