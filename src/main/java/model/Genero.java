@@ -19,6 +19,18 @@ public class Genero {
     subgeneros = new ArrayList<>();
   }
 
+  public Genero(int idGenero, String nome, List<Genero> subgeneros) {
+    this.idGenero = idGenero;
+    this.nome = nome;
+    this.subgeneros = subgeneros;
+  }
+
+  public Genero(String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
+    this.nome = nome;
+    this.idsDiscos = idsDiscos;
+    this.subgeneros = subgeneros;
+  }
+
   private Genero(int idGenero, String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
     this.idGenero = idGenero;
     this.nome = nome;
@@ -56,6 +68,10 @@ public class Genero {
 
   public int getIdGenero() {
     return idGenero;
+  }
+
+  public void setIdGenero(int idGenero) {
+    this.idGenero = idGenero;
   }
 
   public void adicionarSubgenero(Genero novoSubgenero) {
