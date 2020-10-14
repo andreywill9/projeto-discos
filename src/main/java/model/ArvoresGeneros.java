@@ -1,7 +1,5 @@
 package model;
 
-import com.sun.istack.internal.Nullable;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -30,7 +28,7 @@ public class ArvoresGeneros {
         0;
   }
 
-  public void adicionarGenero(Genero genero, @Nullable Integer idGeneroPai) throws Exception {
+  public void adicionarGenero(Genero genero, Integer idGeneroPai) throws Exception {
     genero.setIdGenero(++quantidadeGeneros);
     if (idGeneroPai == null) {
       listaGeneros.add(genero);
