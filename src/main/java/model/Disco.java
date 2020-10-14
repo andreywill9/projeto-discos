@@ -21,10 +21,9 @@ public class Disco {
     this.idGenero = idGenero;
   }
 
-  public Disco(int idDisco, String titulo, int ano) {
+  public Disco(String titulo, int ano) {
     this.titulo = titulo;
     this.ano = ano;
-    this.idDisco = idDisco;
   }
 
   public String getTitulo() {

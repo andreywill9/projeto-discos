@@ -20,21 +20,13 @@ public class Genero {
     idsDiscos = new ArrayList<>();
   }
 
-  public Genero(int idGenero, String nome, List<Genero> subgeneros) {
-    this.idGenero = idGenero;
+  public Genero(String nome, List<Genero> subgeneros) {
     this.nome = nome;
     this.subgeneros = subgeneros;
     idsDiscos = new ArrayList<>();
   }
 
   public Genero(String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
-    this.nome = nome;
-    this.idsDiscos = idsDiscos;
-    this.subgeneros = subgeneros;
-  }
-
-  private Genero(int idGenero, String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
-    this.idGenero = idGenero;
     this.nome = nome;
     this.idsDiscos = idsDiscos;
     this.subgeneros = subgeneros;
