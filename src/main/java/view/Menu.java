@@ -6,6 +6,12 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.LayoutManager;
+import java.awt.RenderingHints;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,7 +24,12 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        tab1.setBackground(Color.white);
+        tela_home.setVisible(true);
+        tela_sobre.setVisible(false);
+        tela_cad_disco.setVisible(false);
+        tela_cad_genero.setVisible(false);
+        tela_consulta_disco.setVisible(false);
+        tela_consulta_genero.setVisible(false);
     }
 
     /**
@@ -30,312 +41,787 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        tab1 = new javax.swing.JPanel();
+        sideMenu = new JPanel();
+        logo = new javax.swing.JLabel();
+        lb_cadastro = new javax.swing.JLabel();
+        tab1_cad_disco = new JPanel();
+        lb_cad_disco = new javax.swing.JLabel();
+        tab2_cad_genero = new JPanel();
+        lb_cad_genero = new javax.swing.JLabel();
+        lb_consulta = new javax.swing.JLabel();
+        tab3_consul_disco = new JPanel();
+        lb_consul_disco = new javax.swing.JLabel();
+        tab4_consul_genero = new JPanel();
+        lb_consul_genero = new javax.swing.JLabel();
+        topBar = new JPanel();
+        btn_sobre = new JPanel();
+        label_sobre = new javax.swing.JLabel();
+        btn_desliga = new JPanel();
+        label_desliga = new javax.swing.JLabel();
+        home = new JPanel();
+        tela_home = new JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tab2 = new javax.swing.JPanel();
+        tela_sobre = new JPanel();
         jLabel2 = new javax.swing.JLabel();
-        tab3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        tab4 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
-        jp1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jp2 = new javax.swing.JPanel();
-        jp3 = new javax.swing.JPanel();
-        jp4 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        tela_cad_disco = new JPanel();
+        title_cad_disco = new javax.swing.JLabel();
+        label_nome_disco = new javax.swing.JLabel();
+        input_cad_disco_nome = new javax.swing.JTextField();
+        label_ano = new javax.swing.JLabel();
+        input_cad_disco_ano = new javax.swing.JTextField();
+        label_genero = new javax.swing.JLabel();
+        combo_box_genero = new javax.swing.JComboBox<>();
+        btn_voltar_cad_disco = new JPanel();
+        label_cancelar = new javax.swing.JLabel();
+        btn_cadastrar_disco = new JPanel();
+        label_cadastrar = new javax.swing.JLabel();
+        tela_cad_genero = new JPanel();
+        title_cad_genero = new javax.swing.JLabel();
+        label_nome_gen = new javax.swing.JLabel();
+        label_grupo = new javax.swing.JLabel();
+        input_cad_genero_nome = new javax.swing.JTextField();
+        combo_box_grupo = new javax.swing.JComboBox<>();
+        btn_voltar_cad_gen = new JPanel();
+        label_cancelar_gen = new javax.swing.JLabel();
+        btn_cadastrar_genero = new JPanel();
+        label_cadastrar_gen = new javax.swing.JLabel();
+        tela_consulta_disco = new JPanel();
+        tela_consulta_genero = new JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new Color(239, 239, 239));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        sideMenu.setBackground(new Color(51, 53, 51));
+        sideMenu.setPreferredSize(new Dimension(250, 0));
 
-        tab1.setBackground(new java.awt.Color(204, 204, 255));
-        tab1.addMouseListener(new java.awt.event.MouseAdapter() {
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/logo_album_cover.png"))); // NOI18N
+
+        lb_cadastro.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lb_cadastro.setForeground(new Color(232, 237, 223));
+        lb_cadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_cadastro.setText("CADASTRO:");
+        lb_cadastro.setPreferredSize(new Dimension(220, 40));
+
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        tab1_cad_disco.setPreferredSize(new Dimension(105, 40));
+        tab1_cad_disco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab1MouseClicked(evt);
+                tab1_cad_discoMouseClicked(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_cad_disco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_cad_disco.setForeground(new Color(232, 237, 223));
+        lb_cad_disco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_cad_disco.setText("Disco");
+
+        javax.swing.GroupLayout tab1_cad_discoLayout = new javax.swing.GroupLayout(tab1_cad_disco);
+        tab1_cad_disco.setLayout(tab1_cad_discoLayout);
+        tab1_cad_discoLayout.setHorizontalGroup(
+            tab1_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_cad_disco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        tab1_cad_discoLayout.setVerticalGroup(
+            tab1_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_cad_disco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        lb_cad_disco.getAccessibleContext().setAccessibleName("Disco");
+
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        tab2_cad_genero.setPreferredSize(new Dimension(105, 40));
+        tab2_cad_genero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab2_cad_generoMouseClicked(evt);
+            }
+        });
+
+        lb_cad_genero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_cad_genero.setForeground(new Color(232, 237, 223));
+        lb_cad_genero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_cad_genero.setText("Gênero");
+
+        javax.swing.GroupLayout tab2_cad_generoLayout = new javax.swing.GroupLayout(tab2_cad_genero);
+        tab2_cad_genero.setLayout(tab2_cad_generoLayout);
+        tab2_cad_generoLayout.setHorizontalGroup(
+            tab2_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_cad_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        tab2_cad_generoLayout.setVerticalGroup(
+            tab2_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_cad_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        lb_consulta.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lb_consulta.setForeground(new Color(232, 237, 223));
+        lb_consulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_consulta.setText("CONSULTA:");
+        lb_consulta.setPreferredSize(new Dimension(220, 40));
+
+        tab3_consul_disco.setBackground(new Color(36, 36, 35));
+        tab3_consul_disco.setPreferredSize(new Dimension(105, 40));
+        tab3_consul_disco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab3_consul_discoMouseClicked(evt);
+            }
+        });
+
+        lb_consul_disco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_consul_disco.setForeground(new Color(232, 237, 223));
+        lb_consul_disco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_consul_disco.setText("Disco");
+
+        javax.swing.GroupLayout tab3_consul_discoLayout = new javax.swing.GroupLayout(tab3_consul_disco);
+        tab3_consul_disco.setLayout(tab3_consul_discoLayout);
+        tab3_consul_discoLayout.setHorizontalGroup(
+            tab3_consul_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_consul_disco, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+        );
+        tab3_consul_discoLayout.setVerticalGroup(
+            tab3_consul_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_consul_disco, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        tab4_consul_genero.setBackground(new Color(36, 36, 35));
+        tab4_consul_genero.setPreferredSize(new Dimension(105, 40));
+        tab4_consul_genero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab4_consul_generoMouseClicked(evt);
+            }
+        });
+
+        lb_consul_genero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lb_consul_genero.setForeground(new Color(232, 237, 223));
+        lb_consul_genero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_consul_genero.setText("Gênero");
+
+        javax.swing.GroupLayout tab4_consul_generoLayout = new javax.swing.GroupLayout(tab4_consul_genero);
+        tab4_consul_genero.setLayout(tab4_consul_generoLayout);
+        tab4_consul_generoLayout.setHorizontalGroup(
+            tab4_consul_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_consul_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        tab4_consul_generoLayout.setVerticalGroup(
+            tab4_consul_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_consul_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout sideMenuLayout = new javax.swing.GroupLayout(sideMenu);
+        sideMenu.setLayout(sideMenuLayout);
+        sideMenuLayout.setHorizontalGroup(
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lb_cadastro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(lb_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sideMenuLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sideMenuLayout.createSequentialGroup()
+                        .addComponent(tab1_cad_disco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0)
+                        .addComponent(tab2_cad_genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(sideMenuLayout.createSequentialGroup()
+                        .addComponent(tab3_consul_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(tab4_consul_genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(20, 20, 20))
+            .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        sideMenuLayout.setVerticalGroup(
+            sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sideMenuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logo)
+                .addGap(22, 22, 22)
+                .addComponent(lb_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tab2_cad_genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab1_cad_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(lb_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(sideMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tab3_consul_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab4_consul_genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138))
+        );
+
+        topBar.setBackground(new Color(51, 53, 51));
+        topBar.setPreferredSize(new Dimension(600, 50));
+
+        btn_sobre.setBackground(new Color(36, 36, 35));
+        btn_sobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_sobreMouseClicked(evt);
+            }
+        });
+
+        label_sobre.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        label_sobre.setForeground(new Color(232, 237, 223));
+        label_sobre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_sobre.setText("?");
+
+        javax.swing.GroupLayout btn_sobreLayout = new javax.swing.GroupLayout(btn_sobre);
+        btn_sobre.setLayout(btn_sobreLayout);
+        btn_sobreLayout.setHorizontalGroup(
+            btn_sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_sobre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+        btn_sobreLayout.setVerticalGroup(
+            btn_sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_sobre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        btn_desliga.setBackground(new Color(36, 36, 35));
+
+        label_desliga.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        label_desliga.setForeground(new Color(232, 237, 223));
+        label_desliga.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_desliga.setText("X");
+        label_desliga.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_desligaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btn_desligaLayout = new javax.swing.GroupLayout(btn_desliga);
+        btn_desliga.setLayout(btn_desligaLayout);
+        btn_desligaLayout.setHorizontalGroup(
+            btn_desligaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_desliga, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+        btn_desligaLayout.setVerticalGroup(
+            btn_desligaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_desliga, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout topBarLayout = new javax.swing.GroupLayout(topBar);
+        topBar.setLayout(topBarLayout);
+        topBarLayout.setHorizontalGroup(
+            topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_sobre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(btn_desliga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        topBarLayout.setVerticalGroup(
+            topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topBarLayout.createSequentialGroup()
+                .addComponent(btn_desliga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btn_sobre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        home.setBackground(new Color(245, 203, 92));
+        home.setLayout(new javax.swing.OverlayLayout(home));
+
+        tela_home.setBackground(new Color(245, 203, 92));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Home");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/home_wallpaper.png"))); // NOI18N
 
-        javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
-        tab1.setLayout(tab1Layout);
-        tab1Layout.setHorizontalGroup(
-            tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(91, 91, 91))
+        javax.swing.GroupLayout tela_homeLayout = new javax.swing.GroupLayout(tela_home);
+        tela_home.setLayout(tela_homeLayout);
+        tela_homeLayout.setHorizontalGroup(
+            tela_homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        tab1Layout.setVerticalGroup(
-            tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        tela_homeLayout.setVerticalGroup(
+            tela_homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
-        tab2.setBackground(new java.awt.Color(204, 204, 255));
-        tab2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab2MouseClicked(evt);
+        home.add(tela_home);
+
+        tela_sobre.setBackground(new Color(245, 203, 92));
+
+        jLabel2.setText("SOBRE");
+
+        javax.swing.GroupLayout tela_sobreLayout = new javax.swing.GroupLayout(tela_sobre);
+        tela_sobre.setLayout(tela_sobreLayout);
+        tela_sobreLayout.setHorizontalGroup(
+            tela_sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tela_sobreLayout.createSequentialGroup()
+                .addGap(294, 294, 294)
+                .addComponent(jLabel2)
+                .addContainerGap(273, Short.MAX_VALUE))
+        );
+        tela_sobreLayout.setVerticalGroup(
+            tela_sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tela_sobreLayout.createSequentialGroup()
+                .addContainerGap(268, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(215, 215, 215))
+        );
+
+        home.add(tela_sobre);
+
+        tela_cad_disco.setBackground(new Color(245, 203, 92));
+
+        title_cad_disco.setFont(new java.awt.Font("Segoe UI", 0, 44)); // NOI18N
+        title_cad_disco.setForeground(new Color(36, 36, 35));
+        title_cad_disco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_cad_disco.setText("Cadastro de Disco");
+
+        label_nome_disco.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        label_nome_disco.setForeground(new Color(36, 36, 35));
+        label_nome_disco.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_nome_disco.setText("Nome:");
+
+        input_cad_disco_nome.setBackground(new Color(227, 252, 239));
+        input_cad_disco_nome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        input_cad_disco_nome.setForeground(new Color(36, 36, 35));
+        input_cad_disco_nome.setCaretColor(new Color(36, 36, 35));
+        input_cad_disco_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_cad_disco_nomeActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Services");
+        label_ano.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        label_ano.setForeground(new Color(36, 36, 35));
+        label_ano.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_ano.setText("Ano:");
 
-        javax.swing.GroupLayout tab2Layout = new javax.swing.GroupLayout(tab2);
-        tab2.setLayout(tab2Layout);
-        tab2Layout.setHorizontalGroup(
-            tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(81, 81, 81))
-        );
-        tab2Layout.setVerticalGroup(
-            tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        tab3.setBackground(new java.awt.Color(204, 204, 255));
-        tab3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab3MouseClicked(evt);
+        input_cad_disco_ano.setBackground(new Color(227, 252, 239));
+        input_cad_disco_ano.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        input_cad_disco_ano.setForeground(new Color(36, 36, 35));
+        input_cad_disco_ano.setCaretColor(new Color(36, 36, 35));
+        input_cad_disco_ano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_cad_disco_anoActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Contact");
+        label_genero.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        label_genero.setForeground(new Color(36, 36, 35));
+        label_genero.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_genero.setText("Gênero:");
 
-        javax.swing.GroupLayout tab3Layout = new javax.swing.GroupLayout(tab3);
-        tab3.setLayout(tab3Layout);
-        tab3Layout.setHorizontalGroup(
-            tab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab3Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(81, 81, 81))
-        );
-        tab3Layout.setVerticalGroup(
-            tab3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        tab4.setBackground(new java.awt.Color(204, 204, 255));
-        tab4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tab4MouseClicked(evt);
+        combo_box_genero.setBackground(new Color(227, 252, 239));
+        combo_box_genero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        combo_box_genero.setForeground(new Color(36, 36, 35));
+        combo_box_genero.setMaximumRowCount(10);
+        combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gênero 1", "Gênero 2", "Gênero 3", "Gênero 4" }));
+        combo_box_genero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_box_generoActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("About");
+        btn_voltar_cad_disco.setBackground(new Color(36, 36, 35));
+        btn_voltar_cad_disco.setPreferredSize(new Dimension(105, 40));
 
-        javax.swing.GroupLayout tab4Layout = new javax.swing.GroupLayout(tab4);
-        tab4.setLayout(tab4Layout);
-        tab4Layout.setHorizontalGroup(
-            tab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab4Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(86, 86, 86))
-        );
-        tab4Layout.setVerticalGroup(
-            tab4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        label_cancelar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_cancelar.setForeground(new Color(232, 237, 223));
+        label_cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_cancelar.setText("Cancelar");
+        label_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_cancelarMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 30)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("C S Psyco");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tab1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tab3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(tab4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jSeparator1)))
-                .addContainerGap())
+        javax.swing.GroupLayout btn_voltar_cad_discoLayout = new javax.swing.GroupLayout(btn_voltar_cad_disco);
+        btn_voltar_cad_disco.setLayout(btn_voltar_cad_discoLayout);
+        btn_voltar_cad_discoLayout.setHorizontalGroup(
+            btn_voltar_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_voltar_cad_discoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1)
-                .addGap(80, 80, 80)
-                .addComponent(tab1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tab2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tab3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tab4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(134, 134, 134))
+        btn_voltar_cad_discoLayout.setVerticalGroup(
+            btn_voltar_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_voltar_cad_discoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new javax.swing.OverlayLayout(jPanel2));
+        btn_cadastrar_disco.setBackground(new Color(36, 36, 35));
 
-        jp1.setBackground(new java.awt.Color(255, 102, 255));
+        label_cadastrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_cadastrar.setForeground(new Color(232, 237, 223));
+        label_cadastrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_cadastrar.setText("Cadastrar");
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\RYAN\\WallpapersPC\\Etc\\software_engineering.png")); // NOI18N
-
-        javax.swing.GroupLayout jp1Layout = new javax.swing.GroupLayout(jp1);
-        jp1.setLayout(jp1Layout);
-        jp1Layout.setHorizontalGroup(
-            jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout btn_cadastrar_discoLayout = new javax.swing.GroupLayout(btn_cadastrar_disco);
+        btn_cadastrar_disco.setLayout(btn_cadastrar_discoLayout);
+        btn_cadastrar_discoLayout.setHorizontalGroup(
+            btn_cadastrar_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_cadastrar_discoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jp1Layout.setVerticalGroup(
-            jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        btn_cadastrar_discoLayout.setVerticalGroup(
+            btn_cadastrar_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_cadastrar_discoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(label_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(jp1);
-
-        jp2.setBackground(new java.awt.Color(51, 51, 255));
-
-        javax.swing.GroupLayout jp2Layout = new javax.swing.GroupLayout(jp2);
-        jp2.setLayout(jp2Layout);
-        jp2Layout.setHorizontalGroup(
-            jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+        javax.swing.GroupLayout tela_cad_discoLayout = new javax.swing.GroupLayout(tela_cad_disco);
+        tela_cad_disco.setLayout(tela_cad_discoLayout);
+        tela_cad_discoLayout.setHorizontalGroup(
+            tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(title_cad_disco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label_ano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label_nome_disco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tela_cad_discoLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btn_voltar_cad_disco, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_cadastrar_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(input_cad_disco_nome)
+                            .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                                .addComponent(input_cad_disco_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label_genero, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(combo_box_genero, 0, 188, Short.MAX_VALUE)))))
+                .addGap(44, 44, 44))
         );
-        jp2Layout.setVerticalGroup(
-            jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+        tela_cad_discoLayout.setVerticalGroup(
+            tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                .addComponent(title_cad_disco, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84)
+                .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(input_cad_disco_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tela_cad_discoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(label_nome_disco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(label_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tela_cad_discoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(label_genero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(input_cad_disco_ano, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(combo_box_genero))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGroup(tela_cad_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_voltar_cad_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cadastrar_disco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44))
         );
 
-        jPanel2.add(jp2);
+        home.add(tela_cad_disco);
 
-        jp3.setBackground(new java.awt.Color(51, 255, 255));
+        tela_cad_genero.setBackground(new Color(245, 203, 92));
 
-        javax.swing.GroupLayout jp3Layout = new javax.swing.GroupLayout(jp3);
-        jp3.setLayout(jp3Layout);
-        jp3Layout.setHorizontalGroup(
-            jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+        title_cad_genero.setFont(new java.awt.Font("Segoe UI", 0, 44)); // NOI18N
+        title_cad_genero.setForeground(new Color(36, 36, 35));
+        title_cad_genero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title_cad_genero.setText("Cadastro de Gênero");
+        title_cad_genero.setPreferredSize(new Dimension(600, 110));
+
+        label_nome_gen.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        label_nome_gen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_nome_gen.setText("Nome:");
+
+        label_grupo.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        label_grupo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_grupo.setText("Grupo:");
+
+        input_cad_genero_nome.setBackground(new Color(227, 252, 239));
+        input_cad_genero_nome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        input_cad_genero_nome.setForeground(new Color(36, 36, 35));
+        input_cad_genero_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                input_cad_genero_nomeActionPerformed(evt);
+            }
+        });
+
+        combo_box_grupo.setBackground(new Color(227, 252, 239));
+        combo_box_grupo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        combo_box_grupo.setMaximumRowCount(10);
+        combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gênero pai 1", "Gênero pai 2", "Gênero pai 3" }));
+
+        btn_voltar_cad_gen.setBackground(new Color(36, 36, 35));
+
+        label_cancelar_gen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_cancelar_gen.setForeground(new Color(232, 237, 223));
+        label_cancelar_gen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_cancelar_gen.setText("Cancelar");
+        label_cancelar_gen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label_cancelar_genMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btn_voltar_cad_genLayout = new javax.swing.GroupLayout(btn_voltar_cad_gen);
+        btn_voltar_cad_gen.setLayout(btn_voltar_cad_genLayout);
+        btn_voltar_cad_genLayout.setHorizontalGroup(
+            btn_voltar_cad_genLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_cancelar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
         );
-        jp3Layout.setVerticalGroup(
-            jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+        btn_voltar_cad_genLayout.setVerticalGroup(
+            btn_voltar_cad_genLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_cancelar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jp3);
+        btn_cadastrar_genero.setBackground(new Color(36, 36, 35));
 
-        jp4.setBackground(new java.awt.Color(51, 255, 51));
+        label_cadastrar_gen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_cadastrar_gen.setForeground(new Color(232, 237, 223));
+        label_cadastrar_gen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_cadastrar_gen.setText("Cadastrar");
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\RYAN\\WallpapersPC\\Etc\\Reading.png")); // NOI18N
-
-        javax.swing.GroupLayout jp4Layout = new javax.swing.GroupLayout(jp4);
-        jp4.setLayout(jp4Layout);
-        jp4Layout.setHorizontalGroup(
-            jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 533, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
+        javax.swing.GroupLayout btn_cadastrar_generoLayout = new javax.swing.GroupLayout(btn_cadastrar_genero);
+        btn_cadastrar_genero.setLayout(btn_cadastrar_generoLayout);
+        btn_cadastrar_generoLayout.setHorizontalGroup(
+            btn_cadastrar_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_cadastrar_gen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
         );
-        jp4Layout.setVerticalGroup(
-            jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp4Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
+        btn_cadastrar_generoLayout.setVerticalGroup(
+            btn_cadastrar_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label_cadastrar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jp4);
+        javax.swing.GroupLayout tela_cad_generoLayout = new javax.swing.GroupLayout(tela_cad_genero);
+        tela_cad_genero.setLayout(tela_cad_generoLayout);
+        tela_cad_generoLayout.setHorizontalGroup(
+            tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(title_cad_genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tela_cad_generoLayout.createSequentialGroup()
+                .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(tela_cad_generoLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btn_voltar_cad_gen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label_nome_gen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label_grupo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tela_cad_generoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combo_box_grupo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(input_cad_genero_nome)))
+                    .addGroup(tela_cad_generoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_cadastrar_genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(44, 44, 44))
+        );
+        tela_cad_generoLayout.setVerticalGroup(
+            tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tela_cad_generoLayout.createSequentialGroup()
+                .addComponent(title_cad_genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label_nome_gen)
+                    .addComponent(input_cad_genero_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(combo_box_grupo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_grupo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addGroup(tela_cad_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_voltar_cad_gen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_cadastrar_genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
+        );
+
+        home.add(tela_cad_genero);
+
+        tela_consulta_disco.setBackground(new Color(255, 255, 51));
+
+        javax.swing.GroupLayout tela_consulta_discoLayout = new javax.swing.GroupLayout(tela_consulta_disco);
+        tela_consulta_disco.setLayout(tela_consulta_discoLayout);
+        tela_consulta_discoLayout.setHorizontalGroup(
+            tela_consulta_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        tela_consulta_discoLayout.setVerticalGroup(
+            tela_consulta_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+
+        home.add(tela_consulta_disco);
+
+        tela_consulta_genero.setBackground(new Color(102, 255, 102));
+
+        javax.swing.GroupLayout tela_consulta_generoLayout = new javax.swing.GroupLayout(tela_consulta_genero);
+        tela_consulta_genero.setLayout(tela_consulta_generoLayout);
+        tela_consulta_generoLayout.setHorizontalGroup(
+            tela_consulta_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        tela_consulta_generoLayout.setVerticalGroup(
+            tela_consulta_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+
+        home.add(tela_consulta_genero);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(sideMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(topBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(sideMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(topBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+   
+    // Eerie Black: 36,36,35
+    // Alabaster: 232,237,223 (white)
+    private void tab1_cad_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1_cad_discoMouseClicked
+        tela_home.setVisible(false);
+        tela_sobre.setVisible(false);
+        tela_cad_disco.setVisible(true);
+        tela_cad_genero.setVisible(false);
+        tela_consulta_disco.setVisible(false);
+        tela_consulta_genero.setVisible(false);
+        
+        tab1_cad_disco.setBackground(new Color(232,237,223));
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        tab3_consul_disco.setBackground(new Color(36, 36, 35));
+        tab4_consul_genero.setBackground(new Color(36, 36, 35));
+        
+        lb_cad_disco.setForeground(new Color(36, 36, 35));
+        lb_cad_genero.setForeground(new Color(232,237,223));
+        lb_consul_disco.setForeground(new Color(232,237,223));
+        lb_consul_genero.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_tab1_cad_discoMouseClicked
 
-    private void tab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1MouseClicked
-        jp1.setVisible(true);
-        jp2.setVisible(false);
-        jp3.setVisible(false);
-        jp4.setVisible(false);
-        tab1.setBackground(Color.white);
-        tab2.setBackground(new Color(204, 204, 255));
-        tab3.setBackground(new Color(204, 204, 255));
-        tab4.setBackground(new Color(204, 204, 255));
-    }//GEN-LAST:event_tab1MouseClicked
+    private void tab2_cad_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2_cad_generoMouseClicked
+        tela_home.setVisible(false);
+        tela_sobre.setVisible(false);
+        tela_cad_disco.setVisible(false);
+        tela_cad_genero.setVisible(true);
+        tela_consulta_disco.setVisible(false);
+        tela_consulta_genero.setVisible(false);
+        
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        tab2_cad_genero.setBackground(new Color(232,237,223));
+        tab3_consul_disco.setBackground(new Color(36, 36, 35));
+        tab4_consul_genero.setBackground(new Color(36, 36, 35));
+        
+        lb_cad_disco.setForeground(new Color(232,237,223));
+        lb_cad_genero.setForeground(new Color(36, 36, 35));
+        lb_consul_disco.setForeground(new Color(232,237,223));
+        lb_consul_genero.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_tab2_cad_generoMouseClicked
 
-    private void tab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2MouseClicked
-        jp1.setVisible(false);
-        jp2.setVisible(true);
-        jp3.setVisible(false);
-        jp4.setVisible(false);
-        tab1.setBackground(new Color(204, 204, 255));
-        tab2.setBackground(Color.white);
-        tab3.setBackground(new Color(204, 204, 255));
-        tab4.setBackground(new Color(204, 204, 255));
-    }//GEN-LAST:event_tab2MouseClicked
+    private void tab3_consul_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab3_consul_discoMouseClicked
+        tela_home.setVisible(false);
+        tela_sobre.setVisible(false);
+        tela_cad_disco.setVisible(false);
+        tela_cad_genero.setVisible(false);
+        tela_consulta_disco.setVisible(true);
+        tela_consulta_genero.setVisible(false);
+        
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        tab3_consul_disco.setBackground(new Color(232,237,223));
+        tab4_consul_genero.setBackground(new Color(36, 36, 35));
+        
+        lb_cad_disco.setForeground(new Color(232,237,223));
+        lb_cad_genero.setForeground(new Color(232,237,223));
+        lb_consul_disco.setForeground(new Color(36, 36, 35));
+        lb_consul_genero.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_tab3_consul_discoMouseClicked
 
-    private void tab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab3MouseClicked
-        jp1.setVisible(false);
-        jp2.setVisible(false);
-        jp3.setVisible(true);
-        jp4.setVisible(false);
-        tab1.setBackground(new Color(204, 204, 255));
-        tab2.setBackground(new Color(204, 204, 255));
-        tab3.setBackground(Color.white);
-        tab4.setBackground(new Color(204, 204, 255));
-    }//GEN-LAST:event_tab3MouseClicked
+    private void tab4_consul_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab4_consul_generoMouseClicked
+        tela_home.setVisible(false);
+        tela_sobre.setVisible(false);
+        tela_cad_disco.setVisible(false);
+        tela_cad_genero.setVisible(false);
+        tela_consulta_disco.setVisible(false);
+        tela_consulta_genero.setVisible(true);
+        
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        tab3_consul_disco.setBackground(new Color(36, 36, 35));
+        tab4_consul_genero.setBackground(new Color(232,237,223));
+        
+        lb_cad_disco.setForeground(new Color(232,237,223));
+        lb_cad_genero.setForeground(new Color(232,237,223));
+        lb_consul_disco.setForeground(new Color(232,237,223));
+        lb_consul_genero.setForeground(new Color(36, 36, 35));
+    }//GEN-LAST:event_tab4_consul_generoMouseClicked
 
-    private void tab4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab4MouseClicked
-        jp1.setVisible(false);
-        jp2.setVisible(false);
-        jp3.setVisible(false);
-        jp4.setVisible(true);
-        tab1.setBackground(new Color(204, 204, 255));
-        tab2.setBackground(new Color(204, 204, 255));
-        tab3.setBackground(new Color(204, 204, 255));
-        tab4.setBackground(Color.white);
-    }//GEN-LAST:event_tab4MouseClicked
+    private void input_cad_disco_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_cad_disco_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_cad_disco_nomeActionPerformed
+
+    private void input_cad_disco_anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_cad_disco_anoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_cad_disco_anoActionPerformed
+
+    private void combo_box_generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_box_generoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_box_generoActionPerformed
+
+    private void label_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_cancelarMouseClicked
+        tela_home.setVisible(true);
+        tela_cad_disco.setVisible(false);
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        lb_cad_disco.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_label_cancelarMouseClicked
+
+    private void input_cad_genero_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_cad_genero_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_input_cad_genero_nomeActionPerformed
+
+    private void label_cancelar_genMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_cancelar_genMouseClicked
+        tela_home.setVisible(true);
+        tela_cad_genero.setVisible(false);
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        lb_cad_genero.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_label_cancelar_genMouseClicked
+
+    private void btn_sobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sobreMouseClicked
+        tela_home.setVisible(false);
+        tela_sobre.setVisible(true);
+        tela_cad_disco.setVisible(false);
+        tela_cad_genero.setVisible(false);
+        tela_consulta_disco.setVisible(false);
+        tela_consulta_genero.setVisible(true);
+        
+        tab1_cad_disco.setBackground(new Color(36, 36, 35));
+        tab2_cad_genero.setBackground(new Color(36, 36, 35));
+        tab3_consul_disco.setBackground(new Color(36, 36, 35));
+        tab4_consul_genero.setBackground(new Color(36, 36, 35));
+        
+        lb_cad_disco.setForeground(new Color(232,237,223));
+        lb_cad_genero.setForeground(new Color(232,237,223));
+        lb_consul_disco.setForeground(new Color(232,237,223));
+        lb_consul_genero.setForeground(new Color(232,237,223));
+    }//GEN-LAST:event_btn_sobreMouseClicked
+
+    private void label_desligaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_desligaMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_label_desligaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -363,9 +849,6 @@ public class Menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -376,27 +859,53 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JPanel btn_cadastrar_disco;
+    private JPanel btn_cadastrar_genero;
+    private JPanel btn_desliga;
+    private JPanel btn_sobre;
+    private JPanel btn_voltar_cad_disco;
+    private JPanel btn_voltar_cad_gen;
+    private JPanel btn_voltar_cad_gen1;
+    private javax.swing.JComboBox<String> combo_box_genero;
+    private javax.swing.JComboBox<String> combo_box_grupo;
+    private JPanel home;
+    private javax.swing.JTextField input_cad_disco_ano;
+    private javax.swing.JTextField input_cad_disco_nome;
+    private javax.swing.JTextField input_cad_genero_nome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel jp1;
-    private javax.swing.JPanel jp2;
-    private javax.swing.JPanel jp3;
-    private javax.swing.JPanel jp4;
-    private javax.swing.JPanel tab1;
-    private javax.swing.JPanel tab2;
-    private javax.swing.JPanel tab3;
-    private javax.swing.JPanel tab4;
+    private javax.swing.JLabel label_ano;
+    private javax.swing.JLabel label_cadastrar;
+    private javax.swing.JLabel label_cadastrar_gen;
+    private javax.swing.JLabel label_cancelar;
+    private javax.swing.JLabel label_cancelar_gen;
+    private javax.swing.JLabel label_cancelar_gen1;
+    private javax.swing.JLabel label_desliga;
+    private javax.swing.JLabel label_genero;
+    private javax.swing.JLabel label_grupo;
+    private javax.swing.JLabel label_nome_disco;
+    private javax.swing.JLabel label_nome_gen;
+    private javax.swing.JLabel label_sobre;
+    private javax.swing.JLabel lb_cad_disco;
+    private javax.swing.JLabel lb_cad_genero;
+    private javax.swing.JLabel lb_cadastro;
+    private javax.swing.JLabel lb_consul_disco;
+    private javax.swing.JLabel lb_consul_genero;
+    private javax.swing.JLabel lb_consulta;
+    private javax.swing.JLabel logo;
+    private JPanel sideMenu;
+    private JPanel tab1_cad_disco;
+    private JPanel tab2_cad_genero;
+    private JPanel tab3_consul_disco;
+    private JPanel tab4_consul_genero;
+    private JPanel tela_cad_disco;
+    private JPanel tela_cad_genero;
+    private JPanel tela_consulta_disco;
+    private JPanel tela_consulta_genero;
+    private JPanel tela_home;
+    private JPanel tela_sobre;
+    private javax.swing.JLabel title_cad_disco;
+    private javax.swing.JLabel title_cad_genero;
+    private JPanel topBar;
     // End of variables declaration//GEN-END:variables
 }
