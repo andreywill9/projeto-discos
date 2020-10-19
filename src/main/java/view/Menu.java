@@ -7,11 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.LayoutManager;
-import java.awt.RenderingHints;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -95,7 +91,7 @@ public class Menu extends javax.swing.JFrame {
         sideMenu.setPreferredSize(new Dimension(250, 0));
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/logo_album_cover.png"))); // NOI18N
+        logo.setIcon(new ImageIcon("viewImages/logo_album_cover.png")); // NOI18N
 
         lb_cadastro.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lb_cadastro.setForeground(new Color(232, 237, 223));
