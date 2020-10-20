@@ -86,4 +86,9 @@ public class Genero {
   public int hashCode() {
     return idGenero;
   }
+
+  @Override
+  public String toString() {
+    return nome;
+  }
 }

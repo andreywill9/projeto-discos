@@ -28,14 +28,13 @@ public class ArvoresGeneros {
         0;
   }
 
-  public void adicionarGenero(Genero genero, Integer idGeneroPai) throws Exception {
+  public void adicionarGenero(Genero genero, Integer idGeneroPai) {
     genero.setIdGenero(++quantidadeGeneros);
     if (idGeneroPai == null) {
       listaGeneros.add(genero);
       return;
     }
-    boolean sucesso = adicionarGenero(genero, idGeneroPai, listaGeneros);
-    if (!sucesso) throw new Exception("O gênero pai especificado não foi encontrado");
+    adicionarGenero(genero, idGeneroPai, listaGeneros);
   }
 
   private boolean adicionarGenero(Genero genero, int idGeneroPai, List<Genero> listaSubgeneros) {

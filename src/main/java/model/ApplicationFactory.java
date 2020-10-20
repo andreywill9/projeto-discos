@@ -1,7 +1,6 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ApplicationFactory {
 
@@ -13,13 +12,15 @@ public class ApplicationFactory {
     generos = new ArvoresGeneros();
   }
 
-  public void cadastrarGenero(String nome) throws Exception {
+  public void cadastrarGenero(String nome) {
     Genero novoGenero = new Genero(nome);
     generos.adicionarGenero(novoGenero, null);
   }
 
-  public void cadastrarGenero(String nome, Integer idGeneroPai) throws Exception {
+  public void cadastrarGenero(String nome, Genero generoPai) {
     Genero novoGenero = new Genero(nome);
+    Integer idGeneroPai = generoPai != null ?
+        generoPai.getIdGenero() : null;
     generos.adicionarGenero(novoGenero, idGeneroPai);
   }
 
@@ -34,5 +35,12 @@ public class ApplicationFactory {
     novoDisco.setIdDisco(todosDiscos.size() + 1);
     generos.adicionarDisco(novoDisco);
     todosDiscos.put(novoDisco.getIdDisco(), novoDisco);
+  }
+
+  public List<Genero> getTodosGeneros() {
+    List<Genero> todosGeneros = new ArrayList<>();
+    todosGeneros.add(null);
+    todosGeneros.addAll(generos.paraLista());
+    return todosGeneros;
   }
 }

@@ -5,8 +5,15 @@
  */
 package view;
 
+import model.ApplicationFactory;
+import model.Genero;
+
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
 import javax.swing.*;
 
 /**
@@ -15,10 +22,14 @@ import javax.swing.*;
  */
 public class Menu extends javax.swing.JFrame {
 
+    private ApplicationFactory factory;
+    private List<Genero> opcoesGeneros;
+
     /**
      * Creates new form Menu
      */
     public Menu() {
+        factory = new ApplicationFactory();
         initComponents();
         tela_home.setVisible(true);
         tela_sobre.setVisible(false);
@@ -249,7 +260,7 @@ public class Menu extends javax.swing.JFrame {
         btn_sobre.setBackground(new Color(36, 36, 35));
         btn_sobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_sobreMouseClicked(evt);
+                btn_sobreMouseClicked();
             }
         });
 
@@ -374,7 +385,7 @@ public class Menu extends javax.swing.JFrame {
         input_cad_disco_nome.setCaretColor(new Color(36, 36, 35));
         input_cad_disco_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                input_cad_disco_nomeActionPerformed(evt);
+                input_cad_disco_nomeActionPerformed();
             }
         });
 
@@ -389,7 +400,7 @@ public class Menu extends javax.swing.JFrame {
         input_cad_disco_ano.setCaretColor(new Color(36, 36, 35));
         input_cad_disco_ano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                input_cad_disco_anoActionPerformed(evt);
+                input_cad_disco_anoActionPerformed();
             }
         });
 
@@ -405,7 +416,7 @@ public class Menu extends javax.swing.JFrame {
         combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gênero 1", "Gênero 2", "Gênero 3", "Gênero 4" }));
         combo_box_genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_box_generoActionPerformed(evt);
+                combo_box_generoActionPerformed();
             }
         });
 
@@ -418,7 +429,7 @@ public class Menu extends javax.swing.JFrame {
         label_cancelar.setText("Cancelar");
         label_cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                label_cancelarMouseClicked(evt);
+                label_cancelarMouseClicked();
             }
         });
 
@@ -544,8 +555,6 @@ public class Menu extends javax.swing.JFrame {
         combo_box_grupo.setBackground(new Color(227, 252, 239));
         combo_box_grupo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         combo_box_grupo.setMaximumRowCount(10);
-        combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gênero pai 1", "Gênero pai 2", "Gênero pai 3" }));
-
         btn_voltar_cad_gen.setBackground(new Color(36, 36, 35));
 
         label_cancelar_gen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -554,7 +563,7 @@ public class Menu extends javax.swing.JFrame {
         label_cancelar_gen.setText("Cancelar");
         label_cancelar_gen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                label_cancelar_genMouseClicked(evt);
+                label_cancelar_genMouseClicked();
             }
         });
 
@@ -586,6 +595,22 @@ public class Menu extends javax.swing.JFrame {
             btn_cadastrar_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(label_cadastrar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        btn_cadastrar_genero.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                if (input_cad_genero_nome.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha o nome do novo gênero", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int indexSelecionado = combo_box_grupo.getSelectedIndex();
+                    Genero generoSelecionado = indexSelecionado > -1 ?
+                        combo_box_grupo.getItemAt(indexSelecionado) : null;
+                    factory.cadastrarGenero(input_cad_genero_nome.getText(), generoSelecionado);
+                    JOptionPane.showMessageDialog(null, "Gêgenro cadastrado com sucesso");
+                    limparCampos();
+                    label_cancelar_genMouseClicked();
+                }
+            }
+        });
 
         javax.swing.GroupLayout tela_cad_generoLayout = new javax.swing.GroupLayout(tela_cad_genero);
         tela_cad_genero.setLayout(tela_cad_generoLayout);
@@ -710,6 +735,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_tab1_cad_discoMouseClicked
 
     private void tab2_cad_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2_cad_generoMouseClicked
+        opcoesGeneros = factory.getTodosGeneros();
+        combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
         tela_home.setVisible(false);
         tela_sobre.setVisible(false);
         tela_cad_disco.setVisible(false);
@@ -766,19 +793,19 @@ public class Menu extends javax.swing.JFrame {
         lb_consul_genero.setForeground(new Color(36, 36, 35));
     }//GEN-LAST:event_tab4_consul_generoMouseClicked
 
-    private void input_cad_disco_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_cad_disco_nomeActionPerformed
+    private void input_cad_disco_nomeActionPerformed() {//GEN-FIRST:event_input_cad_disco_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_input_cad_disco_nomeActionPerformed
 
-    private void input_cad_disco_anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_cad_disco_anoActionPerformed
+    private void input_cad_disco_anoActionPerformed() {//GEN-FIRST:event_input_cad_disco_anoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_input_cad_disco_anoActionPerformed
 
-    private void combo_box_generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_box_generoActionPerformed
+    private void combo_box_generoActionPerformed() {//GEN-FIRST:event_combo_box_generoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_box_generoActionPerformed
 
-    private void label_cancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_cancelarMouseClicked
+    private void label_cancelarMouseClicked() {//GEN-FIRST:event_label_cancelarMouseClicked
         tela_home.setVisible(true);
         tela_cad_disco.setVisible(false);
         tab1_cad_disco.setBackground(new Color(36, 36, 35));
@@ -789,14 +816,14 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_input_cad_genero_nomeActionPerformed
 
-    private void label_cancelar_genMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_cancelar_genMouseClicked
+    private void label_cancelar_genMouseClicked() {//GEN-FIRST:event_label_cancelar_genMouseClicked
         tela_home.setVisible(true);
         tela_cad_genero.setVisible(false);
         tab2_cad_genero.setBackground(new Color(36, 36, 35));
         lb_cad_genero.setForeground(new Color(232,237,223));
     }//GEN-LAST:event_label_cancelar_genMouseClicked
 
-    private void btn_sobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sobreMouseClicked
+    private void btn_sobreMouseClicked() {//GEN-FIRST:event_btn_sobreMouseClicked
         tela_home.setVisible(false);
         tela_sobre.setVisible(true);
         tela_cad_disco.setVisible(false);
@@ -818,6 +845,12 @@ public class Menu extends javax.swing.JFrame {
     private void label_desligaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_desligaMouseClicked
         System.exit(0);
     }//GEN-LAST:event_label_desligaMouseClicked
+
+    private void limparCampos() {
+        input_cad_disco_ano.setText("");
+        input_cad_disco_nome.setText("");
+        input_cad_genero_nome.setText("");
+    }
 
     /**
      * @param args the command line arguments
@@ -863,7 +896,7 @@ public class Menu extends javax.swing.JFrame {
     private JPanel btn_voltar_cad_gen;
     private JPanel btn_voltar_cad_gen1;
     private javax.swing.JComboBox<String> combo_box_genero;
-    private javax.swing.JComboBox<String> combo_box_grupo;
+    private javax.swing.JComboBox<Genero> combo_box_grupo;
     private JPanel home;
     private javax.swing.JTextField input_cad_disco_ano;
     private javax.swing.JTextField input_cad_disco_nome;
