@@ -48,10 +48,9 @@ public class ArvoresGeneros {
         adicionarGenero(genero, idGeneroPai, generoLista.getSubgeneros()));
   }
 
-  public void adicionarDisco(Disco disco) throws Exception {
+  public void adicionarDisco(Disco disco) {
     if (disco.getIdGenero() == null) { return; }
-    boolean resultado = adicionarDisco(disco, listaGeneros);
-    if (!resultado) throw new Exception("O gênero especificado não foi encontrado");
+    adicionarDisco(disco, listaGeneros);
   }
 
   private boolean adicionarDisco(Disco disco, List<Genero> generos) {

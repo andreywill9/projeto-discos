@@ -72,4 +72,9 @@ public class Disco {
   public int hashCode() {
     return idDisco;
   }
+
+  @Override
+  public String toString() {
+    return titulo.concat(", ").concat(String.valueOf(ano));
+  }
 }

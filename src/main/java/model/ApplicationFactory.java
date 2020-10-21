@@ -30,7 +30,10 @@ public class ApplicationFactory {
     todosDiscos.put(novoDisco.getIdDisco(), novoDisco);
   }
 
-  public void cadastrarDisco(String titulo, int ano, Integer idGenero) throws Exception {
+  public void cadastrarDisco(String titulo, int ano, Genero genero) {
+    Integer idGenero = genero != null ?
+        genero.getIdGenero() :
+        null;
     Disco novoDisco = new Disco(titulo, ano, idGenero);
     novoDisco.setIdDisco(todosDiscos.size() + 1);
     generos.adicionarDisco(novoDisco);
@@ -42,5 +45,9 @@ public class ApplicationFactory {
     todosGeneros.add(null);
     todosGeneros.addAll(generos.paraLista());
     return todosGeneros;
+  }
+
+  public List<Disco> getTodosDiscos() {
+    return new ArrayList<Disco>(todosDiscos.values());
   }
 }

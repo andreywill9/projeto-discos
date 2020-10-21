@@ -6,6 +6,7 @@
 package view;
 
 import model.ApplicationFactory;
+import model.Disco;
 import model.Genero;
 
 import java.awt.Color;
@@ -413,7 +414,6 @@ public class Menu extends javax.swing.JFrame {
         combo_box_genero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         combo_box_genero.setForeground(new Color(36, 36, 35));
         combo_box_genero.setMaximumRowCount(10);
-        combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gênero 1", "Gênero 2", "Gênero 3", "Gênero 4" }));
         combo_box_genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_box_generoActionPerformed();
@@ -469,6 +469,24 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(label_cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+        btn_cadastrar_disco.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                String nomeDisco = input_cad_disco_nome.getText();
+                String anoDisco = input_cad_disco_ano.getText();
+                if (nomeDisco.isEmpty() || anoDisco.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Preencha o nome e ano do disco", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int indexSelecionado = combo_box_grupo.getSelectedIndex();
+                    Genero generoSelecionado = indexSelecionado > -1 ?
+                        combo_box_genero.getItemAt(indexSelecionado) : null;
+                    factory.cadastrarDisco(nomeDisco, Integer.parseInt(anoDisco), generoSelecionado);
+                    JOptionPane.showMessageDialog(null, "Disco cadastrado com sucesso");
+                    limparCampos();
+                    label_cancelarMouseClicked();
+                }
+            }
+        });
 
         javax.swing.GroupLayout tela_cad_discoLayout = new javax.swing.GroupLayout(tela_cad_disco);
         tela_cad_disco.setLayout(tela_cad_discoLayout);
@@ -716,6 +734,8 @@ public class Menu extends javax.swing.JFrame {
     // Eerie Black: 36,36,35
     // Alabaster: 232,237,223 (white)
     private void tab1_cad_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1_cad_discoMouseClicked
+        opcoesGeneros = factory.getTodosGeneros();
+        combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
         tela_home.setVisible(false);
         tela_sobre.setVisible(false);
         tela_cad_disco.setVisible(true);
@@ -895,7 +915,7 @@ public class Menu extends javax.swing.JFrame {
     private JPanel btn_voltar_cad_disco;
     private JPanel btn_voltar_cad_gen;
     private JPanel btn_voltar_cad_gen1;
-    private javax.swing.JComboBox<String> combo_box_genero;
+    private javax.swing.JComboBox<Genero> combo_box_genero;
     private javax.swing.JComboBox<Genero> combo_box_grupo;
     private JPanel home;
     private javax.swing.JTextField input_cad_disco_ano;
