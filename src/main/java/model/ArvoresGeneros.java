@@ -49,13 +49,13 @@ public class ArvoresGeneros {
   }
 
   public void adicionarDisco(Disco disco) {
-    if (disco.getIdGenero() == null) { return; }
+    if (disco.getGenero() == null) { return; }
     adicionarDisco(disco, listaGeneros);
   }
 
   private boolean adicionarDisco(Disco disco, List<Genero> generos) {
     for (Genero genero : generos) {
-      if (disco.getIdGenero() == genero.getIdGenero()) {
+      if (disco.getGenero().getIdGenero() == genero.getIdGenero()) {
         genero.adicionarDisco(disco.getIdDisco());
         return true;
       }

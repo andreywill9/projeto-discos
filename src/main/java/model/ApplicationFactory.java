@@ -31,10 +31,7 @@ public class ApplicationFactory {
   }
 
   public void cadastrarDisco(String titulo, int ano, Genero genero) {
-    Integer idGenero = genero != null ?
-        genero.getIdGenero() :
-        null;
-    Disco novoDisco = new Disco(titulo, ano, idGenero);
+    Disco novoDisco = new Disco(titulo, ano, genero);
     novoDisco.setIdDisco(todosDiscos.size() + 1);
     generos.adicionarDisco(novoDisco);
     todosDiscos.put(novoDisco.getIdDisco(), novoDisco);

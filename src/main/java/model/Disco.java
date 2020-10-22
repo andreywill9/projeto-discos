@@ -4,21 +4,21 @@ public class Disco {
 
   private String titulo;
   private int ano, idDisco;
-  private Integer idGenero;
+  private Genero genero;
   
   public Disco() {}
 
-  public Disco(String titulo, int ano, int idDisco, Integer idGenero) {
+  public Disco(String titulo, int ano, int idDisco, Genero genero) {
     this.titulo = titulo;
     this.ano = ano;
     this.idDisco = idDisco;
-    this.idGenero = idGenero;
+    this.genero = genero;
   }
 
-  public Disco(String titulo, int ano, Integer idGenero) {
+  public Disco(String titulo, int ano, Genero genero) {
     this.titulo = titulo;
     this.ano = ano;
-    this.idGenero = idGenero;
+    this.genero = genero;
   }
 
   public Disco(String titulo, int ano) {
@@ -50,12 +50,12 @@ public class Disco {
     this.idDisco = idDisco;
   }
 
-  public Integer getIdGenero() {
-    return idGenero;
+  public Genero getGenero() {
+    return genero;
   }
 
-  public void setIdGenero(Integer idGenero) {
-    this.idGenero = idGenero;
+  public void setIdGenero(Genero genero) {
+    this.genero = genero;
   }
 
   @Override
@@ -75,6 +75,9 @@ public class Disco {
 
   @Override
   public String toString() {
-    return titulo.concat(", ").concat(String.valueOf(ano));
+    String nomeGenero = genero != null ?
+        genero.getNome() :
+        "";
+    return titulo.concat(", ").concat(String.valueOf(ano)).concat(", " + nomeGenero);
   }
 }
