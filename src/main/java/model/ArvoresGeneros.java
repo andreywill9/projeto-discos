@@ -68,7 +68,7 @@ public class ArvoresGeneros {
     List<Genero> lista = new ArrayList<>();
     listaGeneros.forEach(genero -> adicionarSubgenerosLista(genero, lista));
     return lista.stream().sorted(
-        Comparator.comparing(Genero::getNome)).collect(Collectors.toList());
+        Comparator.comparing(Genero::getIdGenero)).collect(Collectors.toList());
   }
 
   private void adicionarSubgenerosLista(Genero genero, List<Genero> lista) {
