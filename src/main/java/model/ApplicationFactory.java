@@ -12,13 +12,8 @@ public class ApplicationFactory {
     generos = new ArvoresGeneros();
   }
 
-  public void cadastrarGenero(String nome) {
-    Genero novoGenero = new Genero(nome);
-    generos.adicionarGenero(novoGenero, null);
-  }
-
   public void cadastrarGenero(String nome, Genero generoPai) {
-    Genero novoGenero = new Genero(nome);
+    Genero novoGenero = new Genero(nome, generoPai);
     Integer idGeneroPai = generoPai != null ?
         generoPai.getIdGenero() : null;
     generos.adicionarGenero(novoGenero, idGeneroPai);

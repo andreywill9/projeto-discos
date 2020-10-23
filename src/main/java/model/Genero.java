@@ -9,27 +9,37 @@ public class Genero {
   private String nome;
   private List<Integer> idsDiscos;
   private List<Genero> subgeneros;
+  private String nomeGeneroPai;
 
   public Genero() {
     subgeneros = new ArrayList<>();
   }
 
-  public Genero(String nome) {
+  public Genero(String nome, Genero generoPai) {
     this.nome = nome;
     subgeneros = new ArrayList<>();
     idsDiscos = new ArrayList<>();
+    nomeGeneroPai = generoPai != null ?
+        generoPai.nome :
+        null;
   }
 
-  public Genero(String nome, List<Genero> subgeneros) {
+  public Genero(String nome, List<Genero> subgeneros, Genero generoPai) {
     this.nome = nome;
     this.subgeneros = subgeneros;
     idsDiscos = new ArrayList<>();
+    nomeGeneroPai = generoPai != null ?
+        generoPai.nome :
+        null;
   }
 
-  public Genero(String nome, List<Integer> idsDiscos, List<Genero> subgeneros) {
+  public Genero(String nome, List<Integer> idsDiscos, List<Genero> subgeneros, Genero generoPai) {
     this.nome = nome;
     this.idsDiscos = idsDiscos;
     this.subgeneros = subgeneros;
+    nomeGeneroPai = generoPai != null ?
+        generoPai.nome :
+        null;
   }
 
   public String getNome() {
@@ -70,6 +80,14 @@ public class Genero {
 
   public void adicionarSubgenero(Genero novoSubgenero) {
     subgeneros.add(novoSubgenero);
+  }
+
+  public boolean possuiSubgenero() {
+    return !subgeneros.isEmpty();
+  }
+
+  public String getNomeGeneroPai() {
+    return nomeGeneroPai;
   }
 
   @Override

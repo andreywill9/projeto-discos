@@ -6,9 +6,11 @@
 package view;
 
 import model.ApplicationFactory;
+import model.Disco;
 import model.Genero;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,6 +23,8 @@ public class Menu extends javax.swing.JFrame {
 
   private final ApplicationFactory factory;
   private List<Genero> opcoesGeneros;
+  private List<Disco> opcoesDiscos;
+  private DefaultTableModel modelGeneros, modelDiscos;
 
   /**
    * Creates new form Menu
@@ -861,6 +865,7 @@ public class Menu extends javax.swing.JFrame {
         return canEdit[columnIndex];
       }
     });
+    modelDiscos = (DefaultTableModel) jTable_disco.getModel();
     jTable_disco.setGridColor(new java.awt.Color(0, 0, 0));
     jTable_disco.setSelectionBackground(new java.awt.Color(227, 252, 239));
     jScrollPane_disco.setViewportView(jTable_disco);
@@ -966,7 +971,7 @@ public class Menu extends javax.swing.JFrame {
 
         },
         new String[]{
-            "ID", "NOME", "GRUPO", "SUBGÊNERO"
+            "ID", "NOME", "GRUPO", "Possui Subg."
         }
     ) {
       final Class[] types = new Class[]{
@@ -984,6 +989,7 @@ public class Menu extends javax.swing.JFrame {
         return canEdit[columnIndex];
       }
     });
+    modelGeneros = (DefaultTableModel) jTable_genero.getModel();
     jTable_genero.setGridColor(new java.awt.Color(0, 0, 0));
     jTable_genero.setSelectionBackground(new java.awt.Color(227, 252, 239));
     jScrollPane_genero.setViewportView(jTable_genero);
@@ -1074,6 +1080,14 @@ public class Menu extends javax.swing.JFrame {
   // Eerie Black: 36,36,35
   // Alabaster: 232,237,223 (white)
   private void tab1_cad_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1_cad_discoMouseClicked
+    int quantidadeGeneros = modelGeneros.getRowCount();
+    for (int i = 0; i < quantidadeGeneros; i++) {
+      modelGeneros.removeRow(0);
+    }
+    int quantidadeDiscos = modelDiscos.getRowCount();
+    for (int i = 0; i < quantidadeDiscos; i++) {
+      modelDiscos.removeRow(0);
+    }
     opcoesGeneros = factory.getTodosGeneros();
     combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
@@ -1095,6 +1109,14 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab1_cad_discoMouseClicked
 
   private void tab2_cad_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2_cad_generoMouseClicked
+    int quantidadeGeneros = modelGeneros.getRowCount();
+    for (int i = 0; i < quantidadeGeneros; i++) {
+      modelGeneros.removeRow(0);
+    }
+    int quantidadeDiscos = modelDiscos.getRowCount();
+    for (int i = 0; i < quantidadeDiscos; i++) {
+      modelDiscos.removeRow(0);
+    }
     opcoesGeneros = factory.getTodosGeneros();
     combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
@@ -1116,6 +1138,10 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab2_cad_generoMouseClicked
 
   private void tab3_consul_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab3_consul_discoMouseClicked
+    int quantidadeGeneros = modelGeneros.getRowCount();
+    for (int i = 0; i < quantidadeGeneros; i++) {
+      modelGeneros.removeRow(0);
+    }
     tela_home.setVisible(false);
     tela_sobre.setVisible(false);
     tela_cad_disco.setVisible(false);
@@ -1135,6 +1161,19 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab3_consul_discoMouseClicked
 
   private void tab4_consul_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab4_consul_generoMouseClicked
+    int quantidadeDiscos = modelDiscos.getRowCount();
+    for (int i = 0; i < quantidadeDiscos; i++) {
+      modelDiscos.removeRow(0);
+    }
+    opcoesGeneros = factory.getTodosGeneros();
+    opcoesGeneros.forEach(genero -> {
+      if (genero != null) {
+        String possuiSubgenero = genero.possuiSubgenero() ?
+            "Sim" :
+            "Não";
+        modelGeneros.addRow(new Object[]{genero.getIdGenero(), genero.getNome(), genero.getNomeGeneroPai(), possuiSubgenero});
+      }
+    });
     tela_home.setVisible(false);
     tela_sobre.setVisible(false);
     tela_cad_disco.setVisible(false);
