@@ -23,7 +23,7 @@ public class Menu extends javax.swing.JFrame {
 
   private final ApplicationFactory factory;
   private List<Genero> opcoesGeneros;
-  private List<Disco> opcoesDiscos;
+  private List<Disco> listaDiscos;
   private DefaultTableModel modelGeneros, modelDiscos;
 
   /**
@@ -608,12 +608,11 @@ public class Menu extends javax.swing.JFrame {
         if (nomeDisco.isEmpty() || anoDisco.isEmpty()) {
           JOptionPane.showMessageDialog(null, "Preencha o nome e ano do disco", "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
-          int indexSelecionado = combo_box_grupo.getSelectedIndex();
+          int indexSelecionado = combo_box_genero.getSelectedIndex();
           Genero generoSelecionado = indexSelecionado > -1 ?
               combo_box_genero.getItemAt(indexSelecionado) : null;
           factory.cadastrarDisco(nomeDisco, Integer.parseInt(anoDisco), generoSelecionado);
           JOptionPane.showMessageDialog(null, "Disco cadastrado com sucesso");
-          factory.getTodosDiscos().forEach(System.out::println);
           limparCampos();
           label_cancelarMouseClicked();
         }
@@ -755,7 +754,7 @@ public class Menu extends javax.swing.JFrame {
           Genero generoSelecionado = indexSelecionado > -1 ?
               combo_box_grupo.getItemAt(indexSelecionado) : null;
           factory.cadastrarGenero(input_cad_genero_nome.getText(), generoSelecionado);
-          JOptionPane.showMessageDialog(null, "Gêgenro cadastrado com sucesso");
+          JOptionPane.showMessageDialog(null, "Gênero cadastrado com sucesso");
           limparCampos();
           label_cancelar_genMouseClicked();
         }
@@ -1142,6 +1141,13 @@ public class Menu extends javax.swing.JFrame {
     for (int i = 0; i < quantidadeGeneros; i++) {
       modelGeneros.removeRow(0);
     }
+    listaDiscos = factory.getTodosDiscos();
+    listaDiscos.forEach(disco -> {
+      String genero = disco.getGenero() != null ?
+          disco.getGenero().getNome() :
+          "";
+      modelDiscos.addRow(new Object[]{disco.getIdDisco(), disco.getTitulo(), disco.getAno(), genero});
+    });
     tela_home.setVisible(false);
     tela_sobre.setVisible(false);
     tela_cad_disco.setVisible(false);
