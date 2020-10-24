@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ApplicationFactory {
 
@@ -41,5 +42,15 @@ public class ApplicationFactory {
 
   public List<Disco> getTodosDiscos() {
     return new ArrayList<Disco>(todosDiscos.values());
+  }
+
+  public List<Genero> buscarGeneros(String filtro) {
+    return generos.paraLista().stream().filter(genero ->
+            genero.getNome().contains(filtro)).collect(Collectors.toList());
+  }
+
+  public List<Disco> buscarDiscos(String filtro) {
+    return new ArrayList<Disco>(todosDiscos.values()).stream()
+            .filter(disco -> disco.getTitulo().contains(filtro)).collect(Collectors.toList());
   }
 }

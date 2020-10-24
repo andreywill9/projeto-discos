@@ -825,6 +825,22 @@ public class Menu extends javax.swing.JFrame {
 
     javax.swing.GroupLayout btn_buscar_discoLayout = new javax.swing.GroupLayout(btn_buscar_disco);
     btn_buscar_disco.setLayout(btn_buscar_discoLayout);
+    btn_buscar_disco.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        String filtro = input_consulta_disco.getText();
+        limparTabelaDiscos();
+        listaDiscos = filtro.isEmpty() ?
+                factory.getTodosDiscos() :
+                factory.buscarDiscos(filtro);
+        listaDiscos.forEach(disco -> {
+          String genero = disco.getGenero() != null ?
+                  disco.getGenero().getNome() :
+                  "";
+          modelDiscos.addRow(new Object[]{disco.getIdDisco(), disco.getTitulo(), disco.getAno(), genero});
+        });
+      }
+    });
     btn_buscar_discoLayout.setHorizontalGroup(
         btn_buscar_discoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(label_buscar_disco, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -1079,14 +1095,8 @@ public class Menu extends javax.swing.JFrame {
   // Eerie Black: 36,36,35
   // Alabaster: 232,237,223 (white)
   private void tab1_cad_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1_cad_discoMouseClicked
-    int quantidadeGeneros = modelGeneros.getRowCount();
-    for (int i = 0; i < quantidadeGeneros; i++) {
-      modelGeneros.removeRow(0);
-    }
-    int quantidadeDiscos = modelDiscos.getRowCount();
-    for (int i = 0; i < quantidadeDiscos; i++) {
-      modelDiscos.removeRow(0);
-    }
+    limparTabelaGeneros();
+    limparTabelaDiscos();
     opcoesGeneros = factory.getTodosGeneros();
     combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
@@ -1108,14 +1118,8 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab1_cad_discoMouseClicked
 
   private void tab2_cad_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2_cad_generoMouseClicked
-    int quantidadeGeneros = modelGeneros.getRowCount();
-    for (int i = 0; i < quantidadeGeneros; i++) {
-      modelGeneros.removeRow(0);
-    }
-    int quantidadeDiscos = modelDiscos.getRowCount();
-    for (int i = 0; i < quantidadeDiscos; i++) {
-      modelDiscos.removeRow(0);
-    }
+    limparTabelaGeneros();
+    limparTabelaDiscos();
     opcoesGeneros = factory.getTodosGeneros();
     combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
@@ -1137,10 +1141,7 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab2_cad_generoMouseClicked
 
   private void tab3_consul_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab3_consul_discoMouseClicked
-    int quantidadeGeneros = modelGeneros.getRowCount();
-    for (int i = 0; i < quantidadeGeneros; i++) {
-      modelGeneros.removeRow(0);
-    }
+    limparTabelaGeneros();
     listaDiscos = factory.getTodosDiscos();
     listaDiscos.forEach(disco -> {
       String genero = disco.getGenero() != null ?
@@ -1167,10 +1168,7 @@ public class Menu extends javax.swing.JFrame {
   }//GEN-LAST:event_tab3_consul_discoMouseClicked
 
   private void tab4_consul_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab4_consul_generoMouseClicked
-    int quantidadeDiscos = modelDiscos.getRowCount();
-    for (int i = 0; i < quantidadeDiscos; i++) {
-      modelDiscos.removeRow(0);
-    }
+    limparTabelaDiscos();
     opcoesGeneros = factory.getTodosGeneros();
     opcoesGeneros.forEach(genero -> {
       if (genero != null) {
@@ -1278,6 +1276,20 @@ public class Menu extends javax.swing.JFrame {
     input_cad_disco_ano.setText("");
     input_cad_disco_nome.setText("");
     input_cad_genero_nome.setText("");
+  }
+
+  private void limparTabelaGeneros() {
+    int quantidadeGeneros = modelGeneros.getRowCount();
+    for (int i = 0; i < quantidadeGeneros; i++) {
+      modelGeneros.removeRow(0);
+    }
+  }
+
+  private void limparTabelaDiscos() {
+    int quantidadeDiscos = modelDiscos.getRowCount();
+    for (int i = 0; i < quantidadeDiscos; i++) {
+      modelDiscos.removeRow(0);
+    }
   }
 
   /**
