@@ -969,6 +969,24 @@ public class Menu extends javax.swing.JFrame {
         btn_buscar_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(label_buscar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
     );
+    btn_buscar_genero.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        String filtro = input_consulta_genero.getText();
+        limparTabelaGeneros();
+        opcoesGeneros = filtro.isEmpty() ?
+                factory.getTodosGeneros() :
+                factory.buscarGeneros(filtro);
+        opcoesGeneros.forEach(genero -> {
+          if (genero != null) {
+            String possuiSubgenero = genero.possuiSubgenero() ?
+                    "Sim" :
+                    "Não";
+            modelGeneros.addRow(new Object[]{genero.getIdGenero(), genero.getNome(), genero.getNomeGeneroPai(), possuiSubgenero});
+          }
+        });
+      }
+    });
     btn_buscar_generoLayout.setVerticalGroup(
         btn_buscar_generoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(label_buscar_gen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
