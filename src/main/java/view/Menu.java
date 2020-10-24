@@ -22,7 +22,7 @@ import java.util.List;
 public class Menu extends javax.swing.JFrame {
 
   private final ApplicationFactory factory;
-  private List<Genero> opcoesGeneros;
+  private List<Genero> listaGeneros;
   private List<Disco> listaDiscos;
   private DefaultTableModel modelGeneros, modelDiscos;
 
@@ -974,10 +974,10 @@ public class Menu extends javax.swing.JFrame {
       public void mouseClicked(MouseEvent e) {
         String filtro = input_consulta_genero.getText();
         limparTabelaGeneros();
-        opcoesGeneros = filtro.isEmpty() ?
+        listaGeneros = filtro.isEmpty() ?
                 factory.getTodosGeneros() :
                 factory.buscarGeneros(filtro);
-        opcoesGeneros.forEach(genero -> {
+        listaGeneros.forEach(genero -> {
           if (genero != null) {
             String possuiSubgenero = genero.possuiSubgenero() ?
                     "Sim" :
@@ -1115,8 +1115,8 @@ public class Menu extends javax.swing.JFrame {
   private void tab1_cad_discoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1_cad_discoMouseClicked
     limparTabelaGeneros();
     limparTabelaDiscos();
-    opcoesGeneros = factory.getTodosGeneros();
-    combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
+    listaGeneros = factory.getTodosGeneros();
+    combo_box_genero.setModel(new javax.swing.DefaultComboBoxModel<>(listaGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
     tela_sobre.setVisible(false);
     tela_cad_disco.setVisible(true);
@@ -1138,8 +1138,8 @@ public class Menu extends javax.swing.JFrame {
   private void tab2_cad_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab2_cad_generoMouseClicked
     limparTabelaGeneros();
     limparTabelaDiscos();
-    opcoesGeneros = factory.getTodosGeneros();
-    combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(opcoesGeneros.toArray(new Genero[0])));
+    listaGeneros = factory.getTodosGeneros();
+    combo_box_grupo.setModel(new javax.swing.DefaultComboBoxModel<>(listaGeneros.toArray(new Genero[0])));
     tela_home.setVisible(false);
     tela_sobre.setVisible(false);
     tela_cad_disco.setVisible(false);
@@ -1187,8 +1187,8 @@ public class Menu extends javax.swing.JFrame {
 
   private void tab4_consul_generoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab4_consul_generoMouseClicked
     limparTabelaDiscos();
-    opcoesGeneros = factory.getTodosGeneros();
-    opcoesGeneros.forEach(genero -> {
+    listaGeneros = factory.getTodosGeneros();
+    listaGeneros.forEach(genero -> {
       if (genero != null) {
         String possuiSubgenero = genero.possuiSubgenero() ?
             "Sim" :
