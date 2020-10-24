@@ -893,6 +893,7 @@ public class Menu extends javax.swing.JFrame {
     label_voltar_disco.setText("Voltar");
     label_voltar_disco.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
+        limparTabelaDiscos();
         label_voltar_discoMouseClicked(evt);
       }
     });
@@ -1035,6 +1036,7 @@ public class Menu extends javax.swing.JFrame {
     label_voltar_gen.setText("Voltar");
     label_voltar_gen.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
+        limparTabelaGeneros();
         label_voltar_genMouseClicked(evt);
       }
     });
